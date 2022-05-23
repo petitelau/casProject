@@ -1,0 +1,228 @@
+html {
+    font-size: 62.5%;
+    font-family: sans-serif;
+    --home-bk-color: #fdfcfc;
+    --section-green-book-color :    hsla(151, 55%, 78%, .6);
+    --section-green-bk-color-hover: hsla(151, 55%, 78%, .8);
+    --section-green-bk-color:       hsla(151, 55%, 95%, 1);
+
+    --section-blue-book-color:      hsla(202, 93%, 84%,.8);
+    --section-blue-bk-color-hover:  hsla(202, 93%, 84%,1);
+    --section-blue-bk-color:        hsla(195, 95%, 93%,1);
+
+    --section-purple-book-color:    hsla(276, 26%, 79%,.6);
+    --section-purple-bk-color-hover:hsla(276, 26%, 79%,.8 );
+    --section-purple-bk-color:      hsla(276, 28%, 93%,1);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+}
+.sticky-home .home-bar{
+    position:fixed;
+    left:0;
+   /* width: 6.4rem;*/
+    width:15vw;
+}
+
+.sticky-bars .bookmark{
+    position:fixed;
+    width: 6.4rem;
+}
+
+main {
+    position: relative;
+}
+.grid {
+    max-width: 100rem;
+    margin: 0 auto;
+    padding: 0 3.2rem;
+    display: grid;
+}
+.grid--1col{
+    grid-template-columns: 70rem;
+}
+
+.grid--2cols {
+    grid-template-columns: 1fr 2fr;
+}
+
+.section-hero {
+    background-color: var(--home-bk-color);
+    display:flex;
+    justify-content: center;
+}
+.home-bar {
+    width: 6.4rem;
+    background-color:#fffef2;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    padding: 3.2rem 1rem;
+}
+.home-icon{
+    cursor:pointer;
+    font-size: 2.6rem;
+}
+.home-icon:hover {
+   transition: 0.5s;
+   transform: scale(1.1);
+}
+
+.v-text-space {
+    letter-spacing: .6rem;
+}
+
+.credits-box {
+    opacity:0;
+    position:absolute;
+    top:60%;
+    left:6%;
+    width: 26rem;
+    border-radius: 30px;
+    background-color: #fff;
+    box-shadow: 0 2.2rem 2.2rem 0 rgba(0,0,0,0.5);
+    z-index: 999;
+    transition:.7s;
+}
+.credits-canvas {
+    width: 80px;
+    height: 150px;
+}
+.credits-inner {
+    margin: 1.2rem 1.2rem;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+   /* border: 5px solid yellow;*/
+}
+.credits-info {
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.logo-img {
+    width: 30%;
+}
+
+/* 6.4 size of bookmark * num bookmarks*/
+.main-photo-container {
+    padding: 4.8rem 0rem 12.8rem 0;
+    padding-right: 19.2rem;
+    position:relative;
+    --hide-image : 1;
+}
+.hero-img{
+    width:100%;
+    padding: 0 1.2rem;
+    transition: 1s;
+}
+.hero-img:hover {
+    filter: grayscale(90%);
+}
+.main-photo-container::before {
+   opacity: var(--hide-image); 
+   width: 6rem;
+   display: block;
+   position: absolute;
+   font-size: 5.4rem;
+   padding-top: 10rem;
+   content: "Testing colors";
+   letter-spacing: 1.3px;
+   background-color: #fed6dc;
+}
+.main-photo-container:hover:before {
+    transform: rotate(-5deg);
+    transition:.5s;
+}
+
+.bookmark {
+    position: absolute;
+    width: 6.4rem;
+    height: 100vh;
+    top:0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+    justify-content: space-between;
+    padding: 3.2rem 1rem;
+    align-items: center;
+    gap: 2.4rem;
+}
+
+.section-color {
+    width: 0;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    right:6.4rem; 
+    overflow-x: hidden;
+    transition: 0.5s;
+   
+}
+.open-section{
+    width: 87vw;
+}
+.close-section{
+    width: 0;
+}
+
+.blue {
+    right: 6.4rem;
+    background-color: var(--section-blue-book-color);
+}
+.purple {
+    right: 0;
+    background-color: var(--section-purple-book-color);
+}
+.green {
+    right:12.8rem;
+    background-color: var(--section-green-book-color);
+}
+.vertical-text {
+    writing-mode: vertical-lr;
+}
+
+.icon-close{
+    cursor: pointer;
+    font-size: 2.2rem;
+}
+
+.color-container {
+    display: flex;
+    justify-content: right;
+    padding: 2.4rem 1.6rem;
+}
+
+#b_green:hover {
+    background-color: var(--section-green-bk-color-hover);
+    transition: .5s;
+}
+#c_green {
+    background-color: var(--section-green-bk-color);
+}
+ #b_blue:hover {
+    background-color: var(--section-blue-bk-color-hover);
+    transition: .5s;
+} 
+#c_blue {
+    background-color: var(--section-blue-bk-color);
+}
+#b_purple:hover {
+    background-color: var(--section-purple-bk-color-hover);
+    transition: 0.5s;
+}
+#c_purple {
+    background-color: var(--section-purple-bk-color);
+}
+
+
+.test{
+    font-size: 10rem;
+}

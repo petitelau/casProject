@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Testing color for people with color blindness"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing Colors -- color blindness</title>
+    <link rel="icon" href="./img/colorIcon.jpeg" />
+    <link rel="apple-touch-icon" href="./img/apple-coloricon.jpeg" />
+    <link rel="stylesheet" href="main-colors/css/style.css" />
+    <link rel="stylesheet" href="main-colors/css/queries.css" />
+    <link rel="stylesheet" href="section-green/css/c-green.css" />
+    <link rel="stylesheet" href="section-blue/css/c-blue.css" />
+    <link rel="stylesheet" href="section-purple/css/c-purple.css" />
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script type="module" src="utils/Scheduler.js"></script>
+  
+    <script type="module" src="section-green/js/TreeView.js"></script>
+    <script type="module" src="./main-colors/js/colors.js"></script>
+    <script type="module"  src="section-blue/js/Squares.js" ></script>
+    <script type="module"  src="section-blue/js/Butterflies.js" ></script>
+    <script type="module" src="./section-purple/js/c-purple.js"></script>
+    <script type="module"  src="./colorsStarter.js" ></script>
+    <script defer src="./bundle.js"></script>
+   
+  </head>
+  <body>
+    <main>
+      <section class="section-hero">
+        <div class="home-bar">
+          <ion-icon
+            name="home-outline"
+            class="home-icon"
+          ></ion-icon>
+          <p
+            class="vertical-text v-text-space"
+          >
+            CAS Web Application
+          </p>
+        </div>
+        <div class="credits-box">
+          <div class="credits-inner">
+            <canvas class="credits-canvas"></canvas>
+            <div class="credits-info">
+              <img
+                id="logo-img"
+                src="img/logo.jpeg"
+                class="logo-img"
+                alt="Fachhochschule Nordwestschweiz FHNW logo"
+              />
+              <p>FHNW Fachhochschule Nordwestschweiz</p>
+              <p>CAS Web Applications</p>
+              <p>Prof. Dierk König</p>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid--1col main-photo-container">
+          <picture>
+            <source srcset="img/macaron3.webp" type="image/webp" />
+            <source srcset="img/macaron3.png" type="image/png" />
+            <img
+              id="macaron_img"
+              src="img/macaron3.png"
+              class="hero-img"
+              alt="macaron with color and color deficiency"
+            />
+          </picture>
+        </div>
+      </section>
+      <section class="bookmark-color">
+        <div id="b_green" class="bookmark green" >
+          <ion-icon name="color-palette-outline"></ion-icon>
+          <span class="vertical-text">Green-ish</span>
+        </div>
+        <div id="b_blue" class="bookmark blue" >
+          <ion-icon name="apps-outline"></ion-icon>
+          <span class="vertical-text">Blue - ish</span>
+        </div>
+        <div
+          id="b_purple"
+          class="bookmark purple"
+        >
+          <ion-icon name="color-filter-outline"></ion-icon>
+          <span class="vertical-text">Purple-ish</span>
+        </div>
+      </section>
+
+      <!-- Section GREEN-->
+      <section id="c_green" class="section-color green close-section">
+        <div class="color-container">
+          <ion-icon
+            id="iconCloseGreen"
+            class="icon-close"
+            name="arrow-forward-outline"
+           >
+          </ion-icon>
+        </div>
+        <h1 class="title-game"> I. Trees
+          <ion-icon class="green-playAgain" name="play-circle-outline"></ion-icon>
+        </h1>
+        <div class="tree-container">
+          <div class="tree_row1">
+              <div class="tree-header">
+              </div>
+              <div id="chooseGreenRed" class="chooseColorContainer">
+                  <div id="greenSide" class="greenColorSide">CHO</div>
+                  <div id="redSide" class="redColorSide">OSE</div>
+              </div>
+              <div class="treeStartContent">        
+                <p class="treeStartAllText">
+                  <span class="treeStartText"></span>
+                  <span class="treeChooseColorsTxt"></span>  
+                   <span class="treeColorsSelected"></span>    
+                </p>
+                <div class="treeStartColors">
+                  <div id="red4" class="startColorBar"></div>
+                  <div id="green2" class="startColorBar"></div>
+                  <div id="brown1" class="startColorBar"></div>
+                  <div id="red1" class="startColorBar"></div>
+                  <div id="brown2" class="startColorBar"></div>
+                  <div id="green3" class="startColorBar"></div>
+                  <div id="brown3" class="startColorBar"></div>
+                  <div id="green1" class="startColorBar"></div>
+                  <div id="brown4" class="startColorBar"></div>
+                  <div id="red3" class="startColorBar"></div>
+                  <div id="red2" class="startColorBar"></div>
+                  <div id="green4" class="startColorBar"></div>
+
+                </div>
+              </div>
+              <div class="canvas-container-tree">
+                <canvas class="canvas-tree" widht="500" height="400"></canvas>
+              </div>     
+
+          </div>
+          <div class="tree_row2">
+              <div class="colorSelected"><span>X</span><span id="checkTreeColor1"></span></div>
+              <div class="colorSelected"><span>X</span><span id="checkTreeColor2"></span></div>
+              <div class="colorSelected"><span>X</span><span id="checkTreeColor3"></span></div>
+              <div class="colorSelected"><span>X</span><span id="checkTreeColor4"></span></div>
+          </div>
+          <h3 class="colorExpectedTitle">&darr; COLORS EXPECTED &darr;</h3>
+          <div class="tree_row2">
+            <div class="colorExpected"></div>
+            <div class="colorExpected"></div>
+            <div class="colorExpected"></div>
+            <div class="colorExpected"></div>
+          </div>
+        </div>
+
+
+        <div class="the-matrix">
+
+          <h1 class="title-game"> II. The Matrix
+            <ion-icon id="playAgainMatrix" class="green-playAgain" name="play-circle-outline"></ion-icon>
+          </h1>
+          <div class="container-matrix">
+            <div class="container-imac">
+              <div id="theMatrixContainerId" class="canvas-container-matrix">
+                <canvas id="canvas-theMatrix" class="canvas-matrix" widht="600" height="300"></canvas>
+              </div>
+              <div id="coverMatrixContainerId" class="canvas-container-matrix">
+                <canvas id="canvas-coverMatrix" class="canvas-matrix" ></canvas>
+                <canvas id="canvas-coverMatrix2" class="canvas-matrix" ></canvas>
+              </div>
+            </div>
+            <div class="container-color-pick">
+              <div class="visual_range">
+                <p class="visual_selected"></p>
+              </div>
+              <input type="range"  class="controls" min="0" max="255" >
+              <input type="range"  class="controls" min="0" max="255" >
+              <input type="range" class="controls" min="0" max="1" >
+              <div class="powerOff">
+                <ion-icon name="power"></ion-icon>
+              </div>
+            </div>
+         </div>
+        </div>
+      </section>
+
+       <!-- Section BLUE-->
+      <section id="c_blue" class="section-color blue close-section">
+        <div class="color-container">
+          <ion-icon
+            id="iconCloseBlue"
+            class="icon-close"
+            name="arrow-forward-outline"
+          ></ion-icon>
+        </div>
+        
+        <h1 class="title-game"> I. Blinking Blues </h1>
+        <div class="squares-game-container" >
+          <div class="squares-presentation" >
+            <div class="square-presentation-image" > </div>
+            <div class="square-presentation-content" >
+              <ion-icon
+                      id="startSquareGame"
+                      class="icon-close"
+                      name="arrow-forward-outline"
+              ></ion-icon>
+              <div class="bottom-labels">
+                <span class="square-label"> Click only on the
+                 <div class="square-mag">
+                   <div class="square-mag1"></div>
+                    <div class="square-mag2"></div>
+                    <div class="square-mag3"></div>
+                 </div>
+                <span class="square-label-effect"> MAGENTA</span>
+                <span id="write_effect" class="square-label-effect">  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="canvas-blue-squares">
+            <canvas class="blueish"  width="400" height="400" ></canvas>
+          </div>
+          <div class="squares-results" >
+            <div class="square-results-image" > </div>
+            <div class="square-results-content" >
+                <span class="square-label"> Your Level</span>
+                <div class="square-level-container">
+                  <div id='squareLevel1' class="square-level"></div>
+                  <div id='squareLevel2' class="square-level"></div>
+                  <div id='squareLevel3' class="square-level"></div>
+                  <div id='squareLevel4' class="square-level"></div>
+                  <div id='squareLevel5' class="square-level"></div>
+                  <div id='squareLevel6' class="square-level"></div>
+                  <div id='squareLevel7' class="square-level"></div>
+                </div>
+                <span class="square-label expected">Result: <span id="squareResult"></span></span>
+                <span class="square-label expected"> All Levels</span>
+                <div class="square-level-container expected">
+                  <div id='squareLevelE1' class="square-level"></div>
+                  <div id='squareLevelE2' class="square-level"></div>
+                  <div id='squareLevelE3' class="square-level"></div>
+                  <div id='squareLevelE4' class="square-level"></div>
+                  <div id='squareLevelE5' class="square-level"></div>
+                  <div id='squareLevelE6' class="square-level"></div>
+                  <div id='squareLevelE7' class="square-level"></div>
+                </div>
+               
+          </div>
+        </div>
+
+        </div>
+
+        <h1 id="bTitle" class="title-game"> II. Butterflies
+          <ion-icon class="blue-playAgain" name="play-circle-outline"></ion-icon>
+        </h1>
+        <div class="butterflies-presentation-container">
+         <div id="paletteBlue1" class="presentation-left paletteBlue1"></div>
+         <div id="paletteBlue2" class="presentation-left paletteBlue2"></div>
+         <div id="paletteBlue3" class="presentation-left paletteBlue3"></div>
+         <div id="paletteBlue4" class="presentation-left paletteBlue4"></div>
+         <div id="paletteBlue5" class="presentation-left paletteBlue5"></div>
+         <div id="paletteBlue6" class="presentation-left paletteBlue6"></div>
+         <div id="paletteBlue7" class="presentation-left paletteBlue7">
+            <img id="bCoverImg"  src="./img/butterfliesCover.png" />
+            <p class="butterflies-cover">START</p>
+         </div>
+       
+         <div id="paletteBlue9"  class="presentation-right paletteBlue6"></div>
+         <div id="paletteBlue10" class="presentation-right paletteBlue5"></div>
+         <div id="paletteBlue11" class="presentation-right paletteBlue4"></div>
+         <div id="paletteBlue12" class="presentation-right paletteBlue3"></div>
+         <div id="paletteBlue13" class="presentation-right paletteBlue2"></div>
+         <div id="paletteBlue14" class="presentation-right paletteBlue1"></div>
+      
+
+        </div>
+        <div class="butterflies-container">
+          <div class="canvas-blue-container">
+            <canvas class="blue-canvas" width="250" height="300"></canvas>
+          </div>
+          <div class="butterfly-content">
+            <div class="imgTitleDeco">
+              <img class="butterflyDeco" src="./img/butterfly2-blue.png" />
+              <img  class="butterflyDeco" src="./img/butterfly-pink.png" />
+              <img  class="butterflyDeco" src="./img/butterfly-mag.png" />
+              <img  class="butterflyDeco" src="./img/butterfly-blue.png" width="80" />
+              <img  class="butterflyDeco" src="./img/butterfly-purple.png" />
+              <img  class="butterflyDeco" src="./img/butterfly3-blue.png" />
+            </div>
+            <p class="startContentButterflies"> Over this litte garden, you may find 
+              butterflies of different colors, 
+              can you see and count them all ?
+              -- go over there with the mouse
+            </p>
+          </div>
+          <div class="stats-bcontent" >
+            <p class="statsButterfliesColors">
+              <span>Number of Butterflies on garden</span>
+              <span id="nButtBlue" class="statsBlue"></span>
+              <span id="nButtPink" class="statsPink"></span>
+              <span id="nButtMag" class="statsMag"></span>
+              <span id="nButtPurple" class="statsPurple"></span>
+              
+            </p>
+            <div class="statsCatchNet">
+              
+              <img src="./img/butterfly-net.png" width="50%"/>
+              <span>Catch them!</span>
+            </div>
+           
+          </div>
+
+        </div>
+       
+      </section>
+
+      <!-- Section PURPLE-->
+      <section id="c_purple" class="section-color purple close-section">
+        <div class="color-container">
+          <ion-icon
+            class="icon-close"
+            name="arrow-forward-outline"
+          ></ion-icon>
+        </div>
+        <h1 class="title-game"> I. How colors are perceived by people with daltonism</h1>
+        <div class="layout-container">
+        </div>
+      </section>
+    </main>
+  
+  </body>
+</html>

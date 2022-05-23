@@ -1,0 +1,156 @@
+
+.layout-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    justify-items: center;
+    row-gap: 10rem;
+    margin: 10rem 7rem 0 3rem;
+    column-gap: 5rem;
+    background-color: hsla(260, 28%, 98%,1);
+   /* border: 5rem solid #ecf9f3; slider balls disturbed*/
+}
+
+.photo-container {
+    display: grid;
+    grid-template-columns: 47rem;
+    grid-template-rows: 31rem;
+    position: relative;
+    justify-self: center;
+    align-items: baseline;
+    z-index:100;
+}
+
+.photo-container1 {
+    position:  absolute;
+    z-index: -1;
+}
+.photo-container2 {
+    width: 100px;
+    overflow: hidden;
+    box-shadow: 0 1.8rem 2.2rem 0 rgba(0,0,0,0.5);
+}
+
+.photo1 {
+    width:47rem;
+    border-radius: 10px;
+}
+.photo2 {
+    background-size: cover;
+    width: 47rem;
+    border-radius: 10px;
+}
+
+.moving-circle {
+    height: 20px;
+    width: 20px;
+    background-color: #7fb69c;
+    border-radius: 50%;
+    position:absolute;
+    left: 100px;
+    transform: translate(-50%,-50%);
+    z-index: 9999;
+    
+}
+.div-photos-slider1,.div-photos-slider2{
+    padding: 10px;
+    border: 5px solid #a5ccba;
+    border-radius: 10px;
+    transition: 0.5s;
+} 
+
+.moving-circle:hover{
+    background-color: #a5ccba;
+}
+.div-photos-slider1:hover,
+.div-photos-slider2:hover {
+    border: 5px solid #72a48c;
+}
+
+
+.rubik-container {
+    display: flex;
+    align-items: center;
+    z-index: 100;
+
+}
+.rubik-container1 {
+    position:absolute;
+    z-index: -1;
+    width: 15rem;
+}
+.rubik-container2 {
+    width: 15rem;
+    grid-column: 1;
+    justify-self: end;
+}
+
+.rubik-photo {
+    width: 100%;
+    border-radius: 10px;
+    transition: .7s;
+}
+
+.svg-container:hover{
+    cursor: grabbing;
+}
+
+.coloring-container{
+    width: 42rem;
+    height: 53rem;
+    justify-self: center;
+    grid-column: span 2
+}
+
+.grid-row-wrapper{
+    display: contents;
+}
+
+.layout-container > .grid-row-wrapper {
+    background-color: #72a48c;
+}   
+
+.canvas-color{
+   /*cursor: url("../../img/paint-roll.svg"), auto;*/
+   cursor: url("../../img/brush.svg"), auto;
+   width: 42rem;
+   height: 53rem;
+}
+
+.letterContainer {
+    width: 80%;
+    height: 30rem;
+    background-color: var(--home-bk-color);
+    justify-items: center;
+    align-self: center;
+    grid-column: 1 / -1;
+    display:flex;
+}
+
+.letterContainer > div {
+   transition: 2s ease-in;
+}
+
+
+/*
+@keyframes  anim1 {
+    20% {transform: translate(25rem,25rem)};
+    100%{transform: translate(25rem,30rem)};
+ }
+
+.letterContainer > div.animate1 {
+    animation-name: anim1;
+    animation-duration: 3s;
+    transform: translate(25rem,10rem);
+}
+
+
+@keyframes  anim2 {
+    20% {transform: translate(35rem,25rem)};
+    100%{transform: translate(35rem,30rem)};
+ }
+
+.letterContainer > div.animate2 {
+    animation-name: anim2;
+    animation-duration: 3s;
+    transform: translate(25rem,10rem);
+}*/

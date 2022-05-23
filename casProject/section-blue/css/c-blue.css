@@ -1,0 +1,313 @@
+
+ .title-game {
+    display: flex;
+     justify-content: flex-start;
+     font-size: 2.4rem;
+     color: #657779;
+     margin: 3.2rem;
+     margin-top: 2.4rem;
+     align-items: flex-end;
+ }
+
+ .squares-game-container{
+    --color-mag-level-1 : magenta;
+    --color-mag-level-2 : #BF00ff;
+    --color-mag-level-3:  #8000ff;
+    --url-blue-tiles:   url('../../img/blue_tiles.png');
+    --url-mag-tiles:    url('../../img/mag_tiles.png');
+     display: grid;
+     grid-template-columns: 18rem 40rem 20rem;
+     column-gap: 2.4rem;
+     font-size: 1.8rem;
+     margin: 3.2rem;
+     margin-left: 6.4rem;
+     border-radius: 10px;
+     background-color: var(--home-bk-color);
+     padding: 2.5rem;
+     border: #73d8f5 solid 1px;
+     justify-content: center;
+     align-content: center;
+     min-width:85rem;
+     max-width:98rem;
+     margin-bottom:12.4rem;
+ }
+ 
+ .squares-presentation {
+     grid-column: 2;
+     display:grid;
+     grid-template-rows: 1fr 2fr;
+     box-shadow: 0 0.3rem 0.3rem 0 rgba(0,0,0,0.3);
+     align-self: flex-end;
+ }
+ 
+ .square-presentation-image {
+     background-image: var(--url-blue-tiles);
+     background-size: cover;
+     
+ }
+
+ .square-results-image{
+     background-image: var(--url-mag-tiles);
+     background-size: cover;
+     width: 20rem;
+ }
+ 
+ #startSquareGame {
+     font-size:8.4rem;
+     color: #888;
+ }
+ .square-presentation-content {
+     background-color: var(--home-bk-color);
+     display:flex;
+     flex-direction: column;
+     justify-content: space-around;
+     align-items: center;
+ }
+
+.squares-results {
+    grid-column: 3;
+    display:grid;
+    grid-template-rows: 1fr 2fr;
+    box-shadow: 0 0.3rem 0.3rem 0 rgba(0,0,0,0.3);
+    opacity: 0;
+}
+
+ .bottom-labels {
+     padding: 1rem;
+ }
+ .square-label-effect {
+     color: magenta;
+ }
+ .square-mag {
+     height:2rem;
+     display:grid;
+     grid-template-columns: 1fr 1fr 1fr;
+     gap: 2.5rem;
+     margin: 1rem;
+ }
+ .square-mag1 {
+     background-color: var(--color-mag-level-1);
+ }
+
+ .square-level:hover {
+     transform: scale(6);
+     color: #fff;
+     font-size: 0.4rem;
+     transition:0.5s;
+ }
+ .square-mag2{
+    background-color: var(--color-mag-level-2);
+ }
+ .square-mag3 {
+    background-color: var(--color-mag-level-3);
+}
+ 
+ .square-results-content {
+    background-color: var(--home-bk-color);
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 1rem 1rem;
+    width:20rem;
+}
+
+ .results-labels {
+     display:flex;
+     flex-direction: column;
+ }
+ .square-level-container {
+     display: grid;
+     grid-template-columns: repeat(7, 1fr);
+     height: 2rem;
+     width: 18rem;
+     gap:0.5rem;
+ }
+ 
+ .square-level {
+    border: 2px solid #333;
+    color:transparent;
+    font-size: 0.1px;
+}   
+.expected {
+    display:none;
+}
+
+
+ .blueish {
+    opacity: 0;
+    width:40rem;
+    height:40rem;
+ }
+ 
+ 
+ /*butterflies */
+
+ .butterflies-presentation-container {
+    --blue-palette1: #41A5F5;
+    --blue-palette2: #3F96F4;
+    --blue-palette3: #3D87F2;
+    --blue-palette4: #3B78F0;
+    --blue-palette5: #3A68EF;
+    --blue-palette6: #3859ED;
+    --blue-palette7: #364AEB;
+
+    margin: 3.2rem;
+    margin-left: 6.4rem;
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    min-width:85rem;
+    max-width:98rem;
+    margin-bottom:12.4rem;
+    border-radius: 10px;
+    border: #73d8f5 solid 1px;
+    height:30rem;
+ }
+
+ .presentation-left {
+     transition: 0.5s;
+ }    
+
+ #bCoverImg {
+     display:none;
+ }
+
+ .butterflies-cover{
+    align-self: center;
+    justify-content: end;
+    font-size: 1.8rem;
+    color: #daf5fe;
+    cursor: pointer;
+ }
+ .paletteBlue7{
+     grid-column: 7 /span 2;
+     display:flex;
+     justify-content: center;
+     background-color: var(--blue-palette7);
+  
+ }
+ .paletteBlue6{
+    background-color:var(--blue-palette6);
+  
+ }
+ .paletteBlue5{
+    background-color: var(--blue-palette5);
+  
+ }
+ .paletteBlue4{
+    background-color: var(--blue-palette4);
+  
+ }
+ .paletteBlue3{
+    background-color: var(--blue-palette3);
+  
+ }
+ .paletteBlue2{
+    background-color:var(--blue-palette2);
+ 
+ }
+ .paletteBlue1{
+    background-color: var(--blue-palette1);
+ 
+ }
+
+ .presentation-right {
+     transition: 0.5s;
+ }
+
+
+ .butterflies-container {
+    margin: 3.2rem;
+    margin-left: 6.4rem;
+    display: grid;
+    grid-template-columns: 25rem 1fr;
+    min-width:85rem;
+    max-width:98rem;
+    margin-bottom:12.4rem;
+    background-color: #fdfcfc;
+    border-radius: 10px;
+    border: #73d8f5 solid 1px;
+    display:none;
+ }
+
+.canvas-blue-container {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-image: url('../../img/canvas-blue-background.jpg');
+    background-size: cover;
+}
+.blue-canvas {
+    width: 25rem;
+    height:30rem;
+}
+
+.butterfly-content {
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1.5fr;
+    padding: 4.2rem;
+    color: #657779;
+    font-size: 1.8rem;
+    gap: 2.4rem;
+    max-height: 30rem;
+   
+}
+.imgTitleDeco{
+    display: flex;
+    justify-content: flex-start;
+    gap:5rem;
+    align-items: center;
+    height: 8rem;
+    overflow: hidden;
+}
+
+.stats-bcontent {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    max-height: 30rem;
+    display:none;
+}
+.statsCatchNet {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    padding: 3.2rem;
+    padding-left: 0;
+    justify-content: flex-end;
+    align-items: flex-start;
+    display:none;
+    max-height: inherit;
+}
+
+.statsButterfliesColors {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.8rem;
+    gap: 2.4rem;
+    padding: 4.2rem;
+    align-items: flex-start;
+}
+
+.statsBlue {
+    color: blue;
+}
+.statsPink {
+    color: #ff57d1;
+}
+.statsPurple {
+    color: purple;
+}
+.statsMag {
+    color: #9940AA;
+}
+
+.butterflyDeco{
+    max-width: 7%;
+}
+.blue-playAgain {
+    font-size: 2.4rem;
+    color: #657779;
+    margin-left: 2rem;
+    cursor:pointer;
+    display:none;
+}
