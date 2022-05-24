@@ -1,5 +1,12 @@
 export {TreeHeaderProjector}
 
+/**
+ *
+ * @param treeController
+ * @param rootElement
+ * @param tree
+ * @constructor
+ */
 const TreeHeaderProjector = (treeController, rootElement, tree) => {
     let colorDivision;
     const init = _ => {

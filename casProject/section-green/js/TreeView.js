@@ -2,22 +2,13 @@ import { fst,snd} from "../../utils/lambda.js";
 
 export {TreeGreenView}
 
-
-/************************************************************************************************
- * TreeGreenView
- *  3 animations on startTreeGame().
- * Draw a Tree with user selected color
- * Falling leaves if not all colors expected are selected
- * Draw a Tree comparision.
+/**
  *
- * @param canvasTree  The Canvas where the Tree is going to be drawn.
- * @returns
- *   initHtmlEl:    Setup all html Elements
- * , initTree:      Setup the entire environment properties and variable to start and re-start
- *
+ * @param treeController
+ * @param htmlEl
+ * @returns {{onClickColorBar: onClickColorBar, onClickColorSelected: onClickColorSelected}}
  * @constructor
- *************************************************************************************************/
-
+ */
 const TreeGreenView = (treeController, htmlEl )=> {
 
     const canvasTree = htmlEl[0];

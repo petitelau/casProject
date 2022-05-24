@@ -22,10 +22,6 @@ test("blue-squares", (assert) => {
 
   const squareResultEl = document.createElement("DIV");
 
-  //const classList = { add: (s) => s, remove: (s) => s };
-  //const expectedR2 = [{ classList }];
-  
-
   const expectedR0 =document.createElement("DIV");
   const expectedR1 =document.createElement("DIV");
   const expectedR2=document.createElement("DIV");

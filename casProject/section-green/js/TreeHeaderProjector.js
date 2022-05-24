@@ -1,20 +1,12 @@
-/*
-       <div class="tree-header">  header
-       <div class="colorDivision">  colorDivision
-       <div class="greenColorSide">  headerLeftElement
-           <img class="growtree" src="./img/greenTree.png" />
-           <p class="treeHeaderTitle"></p>
-       </div>
-       <div class="redColorSide">  headerRightElement
-            <img class="growtree" src="./img/redTree.png" />
-            <p class="treeHeaderTitle"></p>
-       </div>
-       </div>
-       </div>
-
-  */
 export {TreeHeaderProjector}
 
+/**
+ *
+ * @param treeController
+ * @param rootElement
+ * @param tree
+ * @constructor
+ */
 const TreeHeaderProjector = (treeController, rootElement, tree) =>{
 
     const HEADER_TITLE_1 ='Your choice of ';

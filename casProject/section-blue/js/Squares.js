@@ -1,27 +1,23 @@
 import {nTuple,toggle} from  "../../utils/lambda.js";
 import {ObservableList,Observable} from "../../utils/Observables.js";
 import { colorPrefix } from "../../utils/constants.js";
+
 export { BlueSquaresView,BlueSquaresController};
 
-
-/***
- * BlueSquaresController.
- * Every level is passed once the user has click the right color
- * If the user click the wrong color then the test is finish
- *
- * clickOk:
- *           Observable used when user clicks the right color
- * numFinish:
- *          Observable used to finish when a user click a false color and the value
- *          is the level reached.
- * SquareGameModel:
- *          ObservableList used to keep the array of all levels.
- *
- * BlueFormula:
- *          nTuple to keep different formulas for tons and shades of blue
- *
- * nextLevel():
- *          control game progress
+/*
+ * Control the level is passed once the user has click the right color
+ * @returns {{
+ *            blueFormule:  {nTuple}   // to keep different formulas for tons and shades of blue
+ *            isAllFinish: {boolean},  // Method from ObservableList used to keep the array of all levels.
+ *            getBlueish: *,          // from nTuple
+ *            getOtherBlues: *,       // from nTuple
+ *            onNextLevel: onNextLevel,  // Method from ObservableList used to keep the array of all levels.
+ *            numLevel: count, //  control game progress
+ *            getLightBlue: *,
+ *            squareSize: number,
+ *            nextLevel:
+ *            onChangeClick: onChange,
+ *            onFinish: onChange}}
  */
 const BlueSquaresController = () => {
   const squareSize = 40;
@@ -29,6 +25,13 @@ const BlueSquaresController = () => {
   const clickOk = Observable(false);
   const numFinish = Observable(0);
 
+  /**
+   * Builds next level if needed
+   * @returns
+   * {{checkClick: (function(*=, *=): undefined), //whether users has clicked right
+   * magPositions: {x: number, y: number}, magArray: []}}   // magenta positions
+   * @constructor
+   */
   const SquaresLevel = () => {
     const maxLEVEL = 7;
     let numLevel = squaresGameModel.count();
@@ -43,8 +46,6 @@ const BlueSquaresController = () => {
       const xRange = x >= magPositions.x && x <= magPositions.x + squareSize;
       const yRange = y >= magPositions.y && y <= magPositions.y + squareSize;
       if (false === (xRange && yRange)) {
-        console.log(x,y)
-        console.log(magPositions.x,magPositions.y, squareSize)
         numFinish.setValue(numLevel);
         return;
       }
@@ -87,25 +88,16 @@ const BlueSquaresController = () => {
     numLevel: squaresGameModel.count,
     onChangeClick: clickOk.onChange,
     onFinish: numFinish.onChange,
-    isAllFinish: squaresGameModel.isAllFinish,
+    isAllFinish: squaresGameModel.isAllFinish
   };
 };
 
-/***********
- * BlueSquaresView
+
+/**
  *
- *  drawSquares():
- *          Render the canvas with the blue squares blinking.
- *          Magenta color is drawn on the position and exact color calculated by the controller.
- *
- *  statsUpdate():
- *          Render the status progress at all times during the test.
- *
- *   renderFinish():
- *          wrap up of test finish and put available the re-start/tryAgain button.
- *
- *  clickStart():
- *          Set up the environment via Opacity and pointeEvents css property
+ * @param squareController
+ * @returns {{initSquares: initSquares}}
+ * @constructor
  */
 const BlueSquaresView = (squareController) => {
   let squareCanvas;
@@ -155,6 +147,12 @@ const BlueSquaresView = (squareController) => {
   const ssize = squareController.squareSize;
   let interval;
 
+ /*
+  *  drawSquares():
+  *          Render the canvas with the blue squares blinking.
+  *          Magenta color is drawn on the position and exact color calculated by the controller.
+  *
+  */
   const drawSquares = (newLevel) => {
     if (interval) {
       clearInterval(interval);
@@ -211,6 +209,10 @@ const BlueSquaresView = (squareController) => {
     newLevel.checkClick(xClick, yClick);
   };
 
+ /*
+  *  statsUpdate():
+  *          Render the status progress at all times during the test.
+  */
   const statsUpdate = () => {
     const idx = squareController.numLevel() - 1;
     if (idx === 0) return;
@@ -219,6 +221,9 @@ const BlueSquaresView = (squareController) => {
     }00FF`;
   };
 
+ /*   renderFinish():
+  *          wrap up of test finish and put available the re-start/tryAgain button.
+  */
   const renderFinish = (n) => {
     clearInterval(interval);
     if (squareController.isAllFinish()) {
@@ -236,7 +241,10 @@ const BlueSquaresView = (squareController) => {
     if (true == result) squareController.nextLevel();
   };
 
-
+  /**
+   *  clickStart():
+   *          Set up the environment via Opacity and pointeEvents css property
+   */
   const clickStart = () => {
     // set up
     if (squareController.numLevel() > 1) return;

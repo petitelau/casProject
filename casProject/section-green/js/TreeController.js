@@ -6,27 +6,14 @@ import { VALUE, START, REDRAW, FINISH, COMPARE, FALLING, SETUP } from "./Present
 
 export {TreeGreenController}
 
-/***************************************************
- * TreeGreenController.
- * Starting by choosing  (greenSide.onclick/redSide.onclick) using  as Observable when click
-
- *  Determine the positions on the tree and order the  colors as expected following a model of
- *  reds or greens. Following an order will let a easier comparision of the colors selected Vs Expected.
+/**
+ * Control the flow to draw a Tree using Attribute
+ * @returns {{setColorsExpected: setColorsExpected, onTreeSetUp: onChange,
+ * treeFalling: setValue, startDraw: setValue, treeFinish: setValue, replay: replay,
+ * treeCompare: setValue, reDraw: setValue, getTree: (function(): *),
+ * startView: onChange, onTreeCompare: onChange, colorsExpected: [],
+ * onTreeFalling: onChange, startTree: startTree, onReDraw: onChange}}
  *
- *  colorSelected: ObservableArrayEl. Updated when select or de-select a color. It observes the number the colors
- *  still to choose.
- *  colorResult: Observable keeping the order of the colors when user click on Draw, so draw the tree as model if
- *  correct colors where chosen.
- *
- * @returns {{
- * onChangeResult: onChange, userColor: setValue,
- * getTreePositions: [] array with positions calculated for canvas.
- * getFixedPositions:  [] array with positions calculated for canvas set up with pair. so they dont change.
- * onChangeReadyDraw: Observable when positions and colors are set.
- * getColorSelected: [] user selecting colors observable
- * onChangeColorSel:
- *
- * @constructor
  */
 const TreeGreenController = () => {
 
@@ -44,9 +31,26 @@ const TreeGreenController = () => {
         }
     }
 
+    /**
+     *  Determine the positions on the tree and order the colors as expected following a model of reds or greens.
+     * @param colorChosen
+     * @returns {{colorSelected,
+     * onChange , cleanUp: cleanUp, setArr: setArr}, FOLIAGE_DEGREE: number,
+     * getColorResult, cleanUp: cleanUp,
+     * onChangeResult: onChange,
+     * orderColors: orderColors,
+     * getTreePositions,            // [] array with positions calculated for canvas.
+     * onChangeReadyDraw: onChange, // Observable when positions and colors are set.
+     * setColorSelected: setArr,
+     * getFixedPositions,           //  [] array with positions calculated for canvas set up with pair. so they dont change.
+     * colorsSelectedBk: []}}
+     * @constructor
+     */
     const Tree = (colorChosen)=> {
         const FOLIAGE_DEGREE= 5;
+        //Updated when select or de-select a color. It observes the number the colors still to choose.
         const colorSelected = ObservableArrayEl(['0','0','0','0']);
+        //keeping the order of the colors when user click on Draw
         const colorResult = Observable(0);
         const readyToDraw = Observable(false);
 
@@ -125,7 +129,7 @@ const TreeGreenController = () => {
             colorResult.cleanUp();
             readyToDraw.cleanUp();
         }
-        return { 
+        return {
             orderColors, FOLIAGE_DEGREE,
             getTreePositions, getFixedPositions,
             getColorSelected:  colorSelected.getArr,

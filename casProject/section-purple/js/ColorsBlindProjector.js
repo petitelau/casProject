@@ -23,6 +23,7 @@ import {
 export let path1 = "";
 export let path2 = "";
 
+// for the look
 const lineBetween = (rootElement) => {
   const line = document.createElement("DIV");
   line.style.gridColumn = "1 / -1";
@@ -37,6 +38,7 @@ const rowWrapper = () => {
   return wrapper;
 };
 
+// for all sliders
 const initHtml = (foto1, foto2, rootElement) => {
   const photoContainer = document.createElement("DIV");
   photoContainer.setAttribute("class", "photo-container");
@@ -76,6 +78,8 @@ const initHtml = (foto1, foto2, rootElement) => {
     slider,
   };
 };
+
+
 const init_rubik = (rootElement) => {
   const rubikContainer = document.createElement("DIV");
   rubikContainer.setAttribute("class", "rubik-container");
@@ -101,6 +105,7 @@ const init_rubik = (rootElement) => {
   return [rubikPhoto, rubikPhoto2];
 };
 
+// color wheel svg
 const initSvg = (rootElement) => {
   const svgContainer = document.createElement("DIV");
   svgContainer.setAttribute("class", "svg-container");
@@ -180,6 +185,12 @@ const initLetters = (rootElement) => {
   return { containerLetters, letters };
 };
 
+/**
+ * Projector for section purple
+ * @param pController
+ * @param rootElement
+ * @constructor
+ */
 const ColorsBlindProjector = (pController, rootElement) => {
   // setup Html
   lineBetween(rootElement);
@@ -341,12 +352,20 @@ const ColorsBlindProjector = (pController, rootElement) => {
   };
   positionLetters();
 
-  window.onscroll = () => {
-    console.log('scroll');
+  containerLetters.ondblclick = () => {
+    path1 = "";
+    path2 = pathOb;
     positionLetters();
-   // letters[1].classList.remove("animate1");
-   // letters[3].classList.remove("animate2");
+    containerLetters.style.background = '';
+    letters[1].innerHTML = LETTER_O();
+    letters[3].innerHTML = LETTER_O();
+    letters[1].classList.remove("animate1");
+    letters[3].classList.remove("animate2");
   };
+  letters[0].onmouseover = () => {
+    letters[1].classList.add("animate1");
+    letters[3].classList.add("animate2");
+  }
 
   containerLetters.onclick = () => {
     letters[0].style.transform = "translate(20rem, 10rem) ";
@@ -361,8 +380,7 @@ const ColorsBlindProjector = (pController, rootElement) => {
     setTimeout(() => {
       letters[1].innerHTML = LETTER_O();
       letters[3].innerHTML = LETTER_O();
-      //letters[1].classList.add("animate1");
-      //letters[3].classList.add("animate2");
+
     }, 2500);
 
     setTimeout(() => {

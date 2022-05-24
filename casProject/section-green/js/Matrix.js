@@ -3,6 +3,24 @@ import { IMAGE_WHITE_RABBIT } from "../../utils/constants.js";
 
 export {GreenMatrixView, GreenMatrixController}
 
+/**
+ * Control the flow and calculate the font color to use
+ * @returns {{changeColorBk: changeColorBk,
+ * onPower: onChange,
+ * onChangeBk: onChange,
+ * changeColorFont: changeColorFont,
+ * on_off: on_off,
+ * onStartMatrix: onChange,
+ * onChangeColor: onChange,
+ * getColorBk: ((function(): *)|getValue),
+ * getColorChosen: ((function(): *)|getValue),
+ * onStartAnimation: onChange,
+ * startMatrixAnim: startMatrixAnim,
+ * onPlayAgain: onChange,
+ * reset: reset,
+ * startMatrix: setValue}}
+ * @constructor
+ */
 const GreenMatrixController = ()=> {
     const BK ='#402e04'
     let colorValue ='green';
@@ -52,6 +70,13 @@ const GreenMatrixController = ()=> {
     }
 }
 
+/**
+ *
+ * @param matrixController
+ * @param container // contain the canvas
+ * @param playAgain // to reset
+ * @constructor
+ */
 const GreenMatrixView= (matrixController, container,playAgain)=> {
 
     const containerCanvas = container.children[0];

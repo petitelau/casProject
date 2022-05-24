@@ -1,6 +1,5 @@
 import {path1, path2} from './ColorsBlindProjector.js';
 
-
 export const LETTER_C =  `<svg width="53.027" height="65.549" 
 viewBox="0 0 53.027 65.549" xmlns="http://www.w3.org/2000/svg">
 <g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" 

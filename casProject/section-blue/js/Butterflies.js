@@ -4,13 +4,19 @@ import {  ObservableArrayEl,   Observable} from "../../utils/Observables.js";
 import { Scheduler } from "../../utils/Scheduler.js";
 import {blueArray, imageButter} from "../../utils/constants.js";
 
-/***
- * BlueButterfliesPresentationView . Present this game with a curtain
- * that is  opened using a scheduler to order the tasks of opening little by little
- * with a timeout.
- *
- */
 
+/**
+ * Present this game with a curtain that is  opened using a scheduler
+ * @param cLeft
+ * @param cRight
+ * @param bCover
+ * @param bContainer
+ * @param pContainer
+ * @param bCoverImg
+ * @param pAgain
+ * @param blueController
+ * @constructor
+ */
 const BlueButterfliesPresentationView = ( cLeft,cRight,bCover,bContainer,pContainer,
                                           bCoverImg,pAgain,blueController) => {
 
@@ -75,32 +81,34 @@ const BlueButterfliesPresentationView = ( cLeft,cRight,bCover,bContainer,pContai
 
 }
 
-/***
- * BlueButterfliesController. Manage all butterflies list and individuals.
- *
- * Butterfly: (Model)
- *        Class for a butterly containing son image, position,speed,direction,etc
- *        Observable: change direction, so it can eventually change direction.
- *
- * Butterflies:(Model)
- *         for all butterflies ,in or out bounds.
- *
- * ButterfliesOnGarden:
- *         Observable for butterflies inbounds to filter by color and fill the stats.
- *
- * fly ():
- *      Calculate next position based on direction and changing direction in time.
- *
- * newSetButterflies()
- *      Get a new mix of color of butterflies for the garden, all inbounds.
- */
 
+/**
+ *  Manage all butterflies list and individuals.
+ * @param w   // canvas width
+ * @param h   //  canvas height
+ * @returns {{  onGarden:
+                init: setValue,
+                fly: fly,
+                onStart: onChange,
+                butterfliesChange,
+                onReplay: onChange,
+                setUpAnimation: setUpAnimation,
+                onStartButterflies: onChange,
+                startAnimation: startAnimation,
+                newSetButterflies:
+ }}
+
+ */
 const BlueButterfliesController = (w, h) => {
 
     const playAnimation = Observable(false);
     const setUpAnim= Observable(false);
     const initButterflies = Observable(false);
 
+    /*
+     *  Class for a butterfly containing son image, position,speed,direction,etc
+     *  Observable: change direction, so it can eventually change direction.
+     */
     const Butterfly = () => {
         const butterflySizeX = 7;
         const butterflySizeY = 10;
@@ -161,7 +169,9 @@ const BlueButterfliesController = (w, h) => {
         }
     }
 
+     //for all butterflies ,in or out bounds.
     const butterflies = Butterflies([]);
+    //Observable for butterflies inbounds to filter by color and fill the stats.
     const butterfliesOnGarden = ObservableArrayEl([]);
 
     const filterButterfliesColors = (allB) => {
@@ -172,6 +182,10 @@ const BlueButterfliesController = (w, h) => {
         butterfliesOnGarden.setArr([blueB.length, pinkB.length, purpB.length,magB.length]);
     }
 
+    /*
+     * newSetButterflies()
+     *      Get a new mix of color of butterflies for the garden, all inbounds.
+     */
     const newSetButterflies = () => {
         butterflies.clean();
         for (let i = 1; i <= butterflies.numOfButterflies; i++) {
@@ -181,6 +195,10 @@ const BlueButterfliesController = (w, h) => {
         return butterflies.getList();
     };
 
+    /*
+     * fly ():
+     *      Calculate next position based on direction and changing direction in time.
+     */
     const fly = () => {
         const onGarden = [];
         const outGarden = [];
@@ -222,28 +240,30 @@ const BlueButterfliesController = (w, h) => {
     };
 };
 
-/***
- * BlueButterfliesView. Receive the canvas where to draw and all fields for stats
- *
- * drawButterflies:
- *       Render the butterflies on canvas according to position
- *       calculated by controller.
- *
- * catchButterflies ():
- *       Re put only the butterflies that were ou of  the garden again in it.
- *
- * renderStats:
- *        When the Observable trigger a change on the stats.
- *
- * onMouseover, leave ():
- *     set/clear Interval for butterflies to be render in a new position.
- *
+
+/**
+ *  Receive the canvas where to draw and all fields for stats
+ * @param blueCanvas
+ * @param butterflyContent
+ * @param statsContent
+ * @param statsBlue
+ * @param statsPink
+ * @param statsPurp
+ * @param statsMag
+ * @param catchNet
+ * @param blueController
+ * @constructor
  */
 const BlueButterfliesView = (blueCanvas, butterflyContent,statsContent,statsBlue,
                              statsPink,statsPurp,statsMag,catchNet, blueController) => {
     let butterflies
     const ctx = blueCanvas.getContext("2d");
 
+   /*
+    * drawButterflies:
+    *       Render the butterflies on canvas according to position
+    *       calculated by controller.
+    */
     const drawButterflies = () => {
         ctx.clearRect(0, 0, blueCanvas.width, blueCanvas.height);
         butterflies.forEach((b) => {
@@ -255,13 +275,18 @@ const BlueButterfliesView = (blueCanvas, butterflyContent,statsContent,statsBlue
     };
 
     const increaseSpeed = (b) => b.speed =  (b.speed < 3) ? b.speed+1 : 0;
+    /* catchButterflies ():
+    *       Re put only the butterflies that were ou of  the garden again in it.
+    */
     const catchButterflies = (b) =>
         (b.position = {
             x: Math.floor(Math.random() * b.inboundsPos.x),
             y: Math.floor(Math.random() * b.inboundsPos.y),
         });
 
-
+    /* renderStats:
+    *        When the Observable trigger a change on the stats.
+    */
     const renderStats = (onGarden) => {
         statsBlue.innerHTML =  onGarden[0] + ' Blue' ;
         statsPink.innerHTML = onGarden[1] + ' Pink';
@@ -276,6 +301,10 @@ const BlueButterfliesView = (blueCanvas, butterflyContent,statsContent,statsBlue
 
     let timerBlue;
     let timer;
+
+    /* onMouseover, leave ():
+    *     set/clear Interval for butterflies to be render in a new position.
+    */
     blueCanvas.onmouseover =  () => { timerBlue = setInterval(() => {
         drawButterflies();
         blueController.fly();

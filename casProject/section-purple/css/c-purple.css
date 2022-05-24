@@ -131,26 +131,27 @@
 }
 
 
-/*
 @keyframes  anim1 {
-    20% {transform: translate(25rem,25rem)};
-    100%{transform: translate(25rem,30rem)};
+
+    80%  {transform: translate(25rem,20rem)}
+    100% { transform: translate(25rem,20.5rem)}
  }
 
 .letterContainer > div.animate1 {
     animation-name: anim1;
-    animation-duration: 3s;
+    animation-duration: 0.3s;
     transform: translate(25rem,10rem);
 }
 
 
 @keyframes  anim2 {
-    20% {transform: translate(35rem,25rem)};
-    100%{transform: translate(35rem,30rem)};
+
+    80% {transform: translate(35rem,20rem)}
+    100% { transform: translate(35rem,20.5rem)}
  }
 
 .letterContainer > div.animate2 {
     animation-name: anim2;
-    animation-duration: 3s;
+    animation-duration: 0.3s;
     transform: translate(25rem,10rem);
-}*/
+}

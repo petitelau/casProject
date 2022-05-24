@@ -111,17 +111,3 @@ const test = (origin, callback) => {
 
     list.innerHTML += htmltext;
 }
- 
-const details = document.querySelector('.detail-results');
-const h = document.getElementsByTagName('h1');
-h[0].onclick = (e)=> {
-     if (!h[0].style.color.includes('85')) {
-        h[0].style.color='#555';
-        details.style.display='grid';
-     }
-     else {
-        h[0].style.color='#bbb';
-        details.style.display='none';
-     }
-       
-}
