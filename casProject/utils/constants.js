@@ -23,5 +23,5 @@ export const PENCIL2 ="./img/color-pencil2.webp";
 export const RUBIK1 = "./img/rubik1.png";
 export const RUBIK2 = "./img/rubik2.png";
 
-export const IMG_BLACKWHITE = "./img/imgBlackWhite.png";
-export const IMG_COLORFUL = "./img/imgColorfull.png";
+export const IMG_BLACKWHITE = "./img/imgBlackWhite.jpg";
+export const IMG_COLORFUL = "./img/imgColorfull.jpg";
