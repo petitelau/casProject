@@ -273,4 +273,4 @@ const BlueSquaresView = (squareController) => {
   return {
     initSquares
   };
-};
+}
