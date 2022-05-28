@@ -128,6 +128,7 @@ const GreenMatrixView= (matrixController, container,playAgain)=> {
     }
 
     const startAnimation = ()=> {
+        canvasCover.style.pointerEvents = 'none';
         let x = 80;
         let y= 120;
         const followingRabbit = setInterval(()=>{
@@ -136,6 +137,7 @@ const GreenMatrixView= (matrixController, container,playAgain)=> {
             if (x>canvasCover.width){
                 clearInterval(followingRabbit);
                 matrixController.startMatrix(true);
+                canvasCover.style.pointerEvents ='auto';
             }   
         },40);
     }  
