@@ -117,41 +117,106 @@
 }
 
 .letterContainer {
-    width: 80%;
+    display: flex;
     height: 30rem;
-    background-color: var(--home-bk-color);
-    justify-items: center;
-    align-self: center;
-    grid-column: 1 / -1;
-    display:flex;
+    align-items: center;
+    background: #353230;
+    width: 55rem;
+    justify-content: space-evenly;
+    padding-right: 2rem;
+    padding-left:2rem;
+}
+g {
+   transition:1s;
 }
 
-.letterContainer > div {
-   transition: 2s ease-in;
+.text-lettre {
+    letter-spacing: 15px;
+    font-size: 1.2rem;
+    transform: rotate(25deg) translateY(2px);
+}
+.letter-container1 {
+    transform:translate(200px,100px);
+    --xCoord : 200px;
+}
+.letter-container2 {
+    transform:translate(80px,100px);
+    --xCoord : 80px;
+}
+.letter-container3 {
+    transform:translate(150px,100px);
+    --xCoord : 150px;
+}
+.letter-container4 {
+    transform:translate(50px,100px);
+    --xCoord : 50px;
+}
+.letter-container5 {
+    transform:translate(-120px,100px);
+    --xCoord : -120px;
+}
+.letter-container6 {
+    transform:translate(-160px,100px);
+    --xCoord : -160px;
+}
+.letters-play{
+    align-self: flex-start;
+    font-size: 4.2rem;
+    color: #666;
+    cursor:pointer;
+    transform: translateY(-45px);
+    width: 2.5rem;
 }
 
 
-@keyframes  anim1 {
+.play-letters-anim {
+    animation: 1.5s ease-in forwards;
+    animation-name: letterMoving;
+}
+@keyframes letterMoving {
+    0% {
+        transform: translate(var(--xCoord),100px);
+    }
+    50% {
+        transform: translate(var(--xCoord),-100px); 
+    }
+    80% {
+        transform: translate(var(--xCoord),0px);
+    }
+    100% {
+        transform:translate(0);
+    }
+}
 
-    80%  {transform: translate(25rem,20rem)}
-    100% { transform: translate(25rem,20.5rem)}
- }
-
-.letterContainer > div.animate1 {
-    animation-name: anim1;
-    animation-duration: 0.3s;
-    transform: translate(25rem,10rem);
+.play-letters-anim2 {
+    animation: 3.5s forwards;
+    animation-name: innerDotsMoving 
+}
+@keyframes innerDotsMoving {
+    0% {
+        letter-spacing: 15px;
+        font-size: 1.2rem;
+        transform: rotate(25deg) translateY(2px);
+    }
+    60% {
+        letter-spacing: 10px;
+    }
+    80% {
+        font-size: 0.8rem;
+    }
+   
+    100% {
+        letter-spacing: 1px;
+        font-size: 1px;
+        transform: rotate(0) translate(0); 
+    }
 }
 
 
-@keyframes  anim2 {
 
-    80% {transform: translate(35rem,20rem)}
-    100% { transform: translate(35rem,20.5rem)}
- }
 
-.letterContainer > div.animate2 {
-    animation-name: anim2;
-    animation-duration: 0.3s;
-    transform: translate(25rem,10rem);
-}
+
+
+
+
+

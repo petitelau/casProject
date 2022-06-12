@@ -315,7 +315,7 @@ const BlueButterfliesView = (blueCanvas, butterflyContent,statsContent,statsBlue
 
     blueCanvas.onmouseleave = () => { clearInterval(timerBlue);
         catchNet.style.display = 'flex';
-        timer = (timer -50) > 90 ? timer-50 : 90;
+        timer = (timer -50) > 60 ? timer-50 : 60;
         butterflies.forEach((b) => {either(b.position.x)(b.position.y)
         (b)(increaseSpeed)(catchButterflies);
         });

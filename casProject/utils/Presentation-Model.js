@@ -1,4 +1,4 @@
-import {Observable} from "../../utils/Observables.js";
+import {Observable} from "./Observables.js";
 export {Attribute, VALUE, START, SETUP, FALLING,COMPARE, REDRAW,FINISH}
 
 const VALUE = "value";

@@ -5,9 +5,7 @@ import {
   LETTER_C,
   LETTER_O,
   LETTER_R,
-  LETTER_L,
-  pathOb,
-  pathOa,
+  LETTER_L, LETTER_S
 } from "./letters.js";
 import {
   PENCIL1,
@@ -155,9 +153,6 @@ const initLetters = (rootElement) => {
   const letters = [];
   const containerLetters = document.createElement("DIV");
   containerLetters.setAttribute("class", "letterContainer");
-
-  path1 = "";
-  path2 = pathOb;
   const container1 = document.createElement("DIV");
   container1.innerHTML = LETTER_C;
   letters.push(container1);
@@ -173,16 +168,33 @@ const initLetters = (rootElement) => {
   const container5 = document.createElement("DIV");
   container5.innerHTML = LETTER_R;
   letters.push(container5);
+  const container6 = document.createElement("DIV");
+  container6.innerHTML = LETTER_S;
+  letters.push(container6);
+
+  container1.setAttribute("class", "letter-container1");
+  container2.setAttribute("class", "letter-container2");
+  container3.setAttribute("class", "letter-container3");
+  container4.setAttribute("class", "letter-container4");
+  container5.setAttribute("class", "letter-container5");
+  container6.setAttribute("class", "letter-container6");
+
+  const play = document.createElement("ION-ICON");
+  play.setAttribute("name", "play-circle-outline");
+  play.setAttribute("class", "letters-play");
+  play.setAttribute("id", "play-letters");
+  containerLetters.appendChild(play);
 
   containerLetters.appendChild(container1);
   containerLetters.appendChild(container2);
   containerLetters.appendChild(container3);
   containerLetters.appendChild(container4);
   containerLetters.appendChild(container5);
+  containerLetters.appendChild(container6);
 
   rootElement.appendChild(containerLetters);
 
-  return { containerLetters, letters };
+  return { containerLetters, letters, play };
 };
 
 /**
@@ -223,7 +235,7 @@ const ColorsBlindProjector = (pController, rootElement) => {
 
   lineBetween(rootElement);
 
-  const { containerLetters, letters } = initLetters(rootElement);
+  const letters = initLetters(rootElement);
 
   lineBetween(rootElement);
 
@@ -343,58 +355,47 @@ const ColorsBlindProjector = (pController, rootElement) => {
 
   // letters
 
-  const positionLetters = () => {
-    letters[0].style.transform = "translate(-1rem, 10rem) ";
-    letters[1].style.transform = "translate(10rem, 0rem) ";
-    letters[2].style.transform = "translate(25rem, 25rem) ";
-    letters[3].style.transform = "translate(40rem, 0rem) ";
-    letters[4].style.transform = "translate(60rem, 10rem) ";
-  };
-  positionLetters();
+ letters.play.onclick = (e) => {
+   letters.play.style.display ="none";
+    const divs =letters.containerLetters.querySelectorAll('DIV');
+    const svgs=letters.containerLetters.querySelectorAll('g');
 
-  containerLetters.ondblclick = () => {
-    path1 = "";
-    path2 = pathOb;
-    positionLetters();
-    containerLetters.style.background = '';
-    letters[1].innerHTML = LETTER_O();
-    letters[3].innerHTML = LETTER_O();
-    letters[1].classList.remove("animate1");
-    letters[3].classList.remove("animate2");
-  };
-  letters[0].onmouseover = () => {
-    letters[1].classList.add("animate1");
-    letters[3].classList.add("animate2");
-  }
+    // animation
+    Array.from(divs).forEach(el=> el.classList.add('play-letters-anim'));
+    Array.from(divs).forEach(el => {
+        const text = el.querySelector('text');
+        const textPath = el.querySelector('textPath');
+        text.classList.remove('text-lettre');
+        textPath.classList.add('play-letters-anim2'); 
+    })
+     
+    const letterColors = ['#5fcffb','#8A36D2', '#2efe07','#8A36D2','#fcf73b','#5fcffb'];
+    setTimeout(()=> {
+        Array.from(svgs).forEach((el,idx)=> {
+          el.setAttribute('stroke',letterColors[idx]);
+          el.setAttribute('fill', letterColors[idx]);
+          el.setAttribute('opacity', '1');
+          el.setAttribute('stroke-width', '0.1mm');
+        });
+    },2100);
 
-  containerLetters.onclick = () => {
-    letters[0].style.transform = "translate(20rem, 10rem) ";
-    letters[1].style.transform = "translate(25rem, 10rem) ";
-    letters[2].style.transform = "translate(30rem, 10rem) ";
-    letters[3].style.transform = "translate(35rem, 10rem) ";
-    letters[4].style.transform = "translate(40rem, 10rem) ";
+  setTimeout(()=> {
+    // setup
+    
+    Array.from(divs).forEach(el=> el.classList.remove('play-letters-anim'));
 
-    path1 = pathOa;
-    path2 = "";
-
-    setTimeout(() => {
-      letters[1].innerHTML = LETTER_O();
-      letters[3].innerHTML = LETTER_O();
-
-    }, 2500);
-
-    setTimeout(() => {
-      path1 = pathOa;
-      path2 = pathOb;
-      letters[1].innerHTML = LETTER_O();
-      letters[3].innerHTML = LETTER_O();
-      containerLetters.style.background = `linear-gradient(90deg, 
-          hsla(136, 82%, 72%, 1) 0%, 
-          hsla(149, 63%, 50%, 1) 18%, 
-          hsla(193, 46%, 55%, 1) 34%, 
-          hsla(227, 62%, 67%, 0.5) 52%, 
-          hsla(323, 74%, 55%, 0.5) 77%, 
-          hsla(63, 96%, 68%, 1) 100%)`;
-    }, 3000);
-  };
+    Array.from(divs).forEach(el => {
+      const text = el.querySelector('text');
+      const textPath = el.querySelector('textPath');
+      text.classList.add('text-lettre');
+      textPath.classList.remove('play-letters-anim2'); 
+    })
+   
+    Array.from(svgs).forEach((el,idx)=> {
+      el.setAttribute('stroke','transparent');
+      el.setAttribute('fill', 'transparent');
+    });
+    letters.play.style.display ="block";
+  },6000); 
+ }
 };

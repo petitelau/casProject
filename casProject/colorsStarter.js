@@ -1,4 +1,4 @@
-import {MainColorsView, MainColorsController}  from './main-colors/js/colors.js';
+import {MainColorsView}  from './main-colors/js/home.js';
 import {BlueSquaresView, BlueSquaresController} from "./section-blue/js/Squares.js";
 import {BlueButterfliesView, BlueButterfliesPresentationView, BlueButterfliesController} from "./section-blue/js/Butterflies.js";
 import {GreenMatrixController, GreenMatrixView} from "./section-green/js/Matrix.js";
@@ -9,10 +9,12 @@ import {TreeGreenController} from "./section-green/js/TreeController.js";
 
 import {PurpleController} from "./section-purple/js/c-purple.js";
 import {PurpleView} from "./section-purple/js/c-purple.js"
+import { listController, selectionController } from './main-colors/js/nav-model.js';
+import { ColorBar, DetailView, MasterView, noColor } from './main-colors/js/ColorBar.js';
 
 let mainController;
 
-const mainStarter = ()=> {
+/*const mainStarter_bak = ()=> {
     const bookmarks = document.getElementsByClassName('bookmark');
     const c_g= document.getElementById('c_green');
     const c_b =document.getElementById('c_blue');
@@ -34,6 +36,30 @@ const mainStarter = ()=> {
 
     const mainView = MainColorsView(mainController);
     mainView.initColorSections(c_g, c_b, c_p, b_g, b_bl, b_p, bookmarks);
+    mainView.initHtmlEl(hero,credits_box, credit_canvas,home,cas);
+}*/
+
+const mainStarter = () => {
+    const navItems = ['green','blue','purple'];
+    const lController = listController(ColorBar,navItems);
+    const sController = selectionController(noColor);
+
+    MasterView(lController,sController);
+    DetailView(sController);
+
+    lController.addItems();
+
+    mainController = sController;
+
+    const hero=document.querySelector('.main-photo-container');
+    const credits_box = document.querySelector('.credits-box');
+    const credit_canvas = document.querySelector('.credits-canvas');
+    const home = document.querySelector('.home-icon');
+    const cas = document.querySelector('.v-text-space');
+
+    home.onclick = () =>  mainController.closeColor();
+
+    const mainView = MainColorsView(mainController);
     mainView.initHtmlEl(hero,credits_box, credit_canvas,home,cas);
 }
 
@@ -116,7 +142,6 @@ const greenMatrixStarter = ()=> {
     let sliderGreen= ctrls[0];
     let sliderRed = ctrls[1];
     let sliderBk = ctrls[2];
-
     const matrixController = GreenMatrixController();
     GreenMatrixView(matrixController,matrix,playAgain);
 

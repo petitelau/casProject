@@ -163,7 +163,7 @@ main {
     top:0;
     right:6.4rem; 
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: 0.2s;
    
 }
 .open-section{
@@ -171,6 +171,9 @@ main {
 }
 .close-section{
     width: 0;
+}
+.open-section2{
+    width: 92vw;
 }
 
 .blue {

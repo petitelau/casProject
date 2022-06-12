@@ -1,8 +1,8 @@
 import {Observable, ObservableArrayEl} from "../../utils/Observables.js";
 import {fst, nTuple, Pair, snd} from "../../utils/lambda.js";
-import {Attribute} from "./Presentation-Model.js";
+import {Attribute} from "../../utils/Presentation-Model.js";
 
-import { VALUE, START, REDRAW, FINISH, COMPARE, FALLING, SETUP } from "./Presentation-Model.js";
+import { VALUE, START, REDRAW, FINISH, COMPARE, FALLING, SETUP } from "../../utils/Presentation-Model.js";
 
 export {TreeGreenController}
 

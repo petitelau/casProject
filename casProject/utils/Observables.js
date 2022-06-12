@@ -1,5 +1,5 @@
 export { ObservableList, Observable,
-         ObservableValueMustChange, ObservableArrayEl }
+         ObservableValueMustChange, ObservableArrayEl , ObservableListNav}
 
 
 const Observable =  value => {
@@ -84,5 +84,19 @@ const ObservableList = list => {
         },
         count: ()=> list.length,
         isAllFinish : ()=> allFinish
+    }
+}
+
+const ObservableListNav = list => {
+    const listeners = [];
+  
+    return {
+        onAdd: callback => {
+            listeners.push(callback);
+        },
+        add: (item)=> {
+            list.push(item);
+            listeners.forEach(callback => callback(item));
+        }
     }
 }
