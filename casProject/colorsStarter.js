@@ -14,31 +14,6 @@ import { ColorBar, DetailView, MasterView, noColor } from './main-colors/js/Colo
 
 let mainController;
 
-/*const mainStarter_bak = ()=> {
-    const bookmarks = document.getElementsByClassName('bookmark');
-    const c_g= document.getElementById('c_green');
-    const c_b =document.getElementById('c_blue');
-    const c_p =document.getElementById('c_purple');
-    const b_g = document.getElementById('b_green');
-    const b_bl=document.getElementById('b_blue');
-    const b_p= document.getElementById('b_purple');
-    const hero=document.querySelector('.main-photo-container');
-    const credits_box = document.querySelector('.credits-box');
-    const credit_canvas = document.querySelector('.credits-canvas');
-    const home = document.querySelector('.home-icon');
-    const cas = document.querySelector('.v-text-space');
-
-    mainController = MainColorsController();
-    b_g.onclick = () =>  mainController.openColor("green");
-    b_bl.onclick = () =>  mainController.openColor("blue");
-    b_p.onclick = () =>  mainController.openColor("purple");
-    home.onclick = () =>  mainController.closeColor();
-
-    const mainView = MainColorsView(mainController);
-    mainView.initColorSections(c_g, c_b, c_p, b_g, b_bl, b_p, bookmarks);
-    mainView.initHtmlEl(hero,credits_box, credit_canvas,home,cas);
-}*/
-
 const mainStarter = () => {
     const navItems = ['green','blue','purple'];
     const lController = listController(ColorBar,navItems);

@@ -106,7 +106,7 @@ const BlueButterfliesController = (w, h) => {
     const initButterflies = Observable(false);
 
     /*
-     *  Class for a butterfly containing son image, position,speed,direction,etc
+     *  Class for a butterfly containing its image, position,speed,direction,etc
      *  Observable: change direction, so it can eventually change direction.
      */
     const Butterfly = () => {

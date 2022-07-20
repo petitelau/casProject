@@ -3,16 +3,17 @@ import { listController } from "./nav-model.js";
 import {colorBarProjector, sectionProjector, closeAll} from "./nav-projector.js";
 export { MasterView, DetailView, noColor , ColorBar};
 
-
+// model
 const ColorBar = (c) => {
   const nameAttr = Attribute(c);
-
   return { nameAttr };
 };
 
 const noColor = ColorBar("");
 const ATTRIBUTES_NAMES = ['nameAttr'];
 
+
+// views
 const MasterView = (listController, selectionController) => {
   const render = (color) =>
     colorBarProjector(

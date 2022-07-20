@@ -197,6 +197,24 @@ const initLetters = (rootElement) => {
   return { containerLetters, letters, play };
 };
 
+const finalCircle = (rootElement)=>{
+  const circleHtml = `
+  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+      x="0px" y="0px" width="500" height="500" viewBox="0 0 025 025">
+      <path id="circulito" fill="transparent" stroke="transparent"
+          d="M14,7.5c0,3.5899-2.9101,6.5-6.5,6.5S1,11.0899,1,7.5S3.9101,1,7.5,1S14,3.9101,14,7.5z" />
+      <text width="100%" font-size="smaller"  class="circle-text">
+          <textPath xlink:href="#circulito" style="stroke: turquoise;stroke-width: 0.1;">
+             FHNW CAS Web Applikationen -- June 2022 . Laura Gomez
+          </textPath>
+      </text>
+  </svg>`
+  const htmlEl = document.createElement('DIV');
+  htmlEl.setAttribute('class', 'circle-container');
+  htmlEl.innerHTML = circleHtml;
+  rootElement.appendChild(htmlEl);
+}
+
 /**
  * Projector for section purple
  * @param pController
@@ -237,6 +255,9 @@ const ColorsBlindProjector = (pController, rootElement) => {
 
   const letters = initLetters(rootElement);
 
+  finalCircle(rootElement);
+
+  lineBetween(rootElement);
   lineBetween(rootElement);
 
   // Listeners and beyond.

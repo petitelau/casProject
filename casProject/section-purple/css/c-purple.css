@@ -214,7 +214,32 @@ g {
 
 
 
+.circle-text {
+    font-size: 1.4px;
+}
 
+.circle-container {
+    width: 28rem;
+    height: 28rem;
+    background: transparent;
+    border-radius: 50%;
+    transform: scale(0.45) rotate(100deg);
+    transition: 2s;
+    /*background: url('../../img/logo.jpeg');
+    background-size: cover;*/
+   /* width: 20rem;
+    height: 20rem;
+    background: red;
+    border-radius: 50%;
+    padding: 1.5rem;
+    padding-left: 2rem;
+    transform: scale(0.6);
+    transition: 3s;*/
+}
+
+.circle-container:hover {
+    transform:  rotate(250deg);
+}
 
 
 

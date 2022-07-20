@@ -224,9 +224,10 @@ test("blue-butterflies", (assert) => {
     assert.equals(b.position.x , expectedResultFly[idx].x);
     assert.equals(b.position.y , expectedResultFly[idx].y);
   });
-
+  
+  assert.equals (statsBlue.innerHTML.includes('Blue'), true);
   // if all inbounds nothing updated by the observer on the first fly
-  assert.equals (statsBlue.innerHTML === '', inBounds === numOfButterflies)
+  assert.equals (inBounds==numOfButterflies, true);
 
   //fly 100 times
   for (let i = 1;i<100;i++)
