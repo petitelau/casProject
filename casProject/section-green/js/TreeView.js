@@ -277,18 +277,29 @@ const TreeGreenView = (treeController, htmlEl )=> {
     // inform the controller about it.
     canvasTree.onclick = (e) => {
         const rect = canvasTree.getBoundingClientRect();
-        const xClick = e.clientX - rect.left;
-        const yClick = e.clientY - rect.top;
+
+        // transform to canvas.width units
+        let percentageX = (rect.width*100)/canvasTree.width;
+        let eq = 100 + (100-percentageX);
+        let eqY  = (rect.height*100)/canvasTree.height;
+        
+        let xClick = e.clientX - rect.left;
+        xClick = Math.round((xClick * eq) /100);
+
+        let yClick = e.clientY - rect.top;
+        yClick =Math.round((yClick * eqY) /100);
+
+
 
         //backwards to choose  colors
-        if (xClick < 35 && yClick >= (canvasTree.height-30)) {
+        if (xClick < 35 && yClick >= (canvasTree.height-180)) {
             startContentDisplay();
             treeController.reDraw(true);
            return;
         }        
 
         //forward validate colors
-        if (xClick >= (canvasTree.width-30) && yClick >= (canvasTree.height-30)) {
+        if (xClick >= (canvasTree.width-180) && yClick >= (canvasTree.height-180)) {
             copyEl.every(c=> c.id.includes(colorChosen))
             if ( copyEl.every(c=> c.id.includes(colorChosen)) ) {
                 drawCompareTree();
@@ -305,7 +316,7 @@ const TreeGreenView = (treeController, htmlEl )=> {
         }
 
         //forward final result
-       if (xClick >= (canvasTree.width-30) && (yClick >= 10 && yClick <=40)) {
+       if (xClick >= (canvasTree.width-180) && (yClick >= 10 && yClick <=40)) {
             drawCompareTree();    
             finalCompare();
             treeController.treeCompare(true);

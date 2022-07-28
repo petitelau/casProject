@@ -5,7 +5,8 @@ import { colorPrefix } from "../../utils/constants.js";
 export { BlueSquaresView,BlueSquaresController};
 
 /*
- * Control the level is passed once the user has click the right color
+ * Control the progression on the game once the user has click the right color. 
+*  Increase difficul level each time
  * @returns {{
  *            blueFormule:  {nTuple}   // to keep different formulas for tons and shades of blue
  *            isAllFinish: {boolean},  // Method from ObservableList used to keep the array of all levels.
