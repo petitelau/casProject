@@ -45,6 +45,7 @@ const colorBarProjector = (
     htmlEL.onclick = (e) => {
       selectionController.setSectionSelected(color);
       openColor(e.target, c.getValue());
+      selectionController.setOpen(true);
     };
   });
 };

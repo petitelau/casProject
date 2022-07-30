@@ -33,7 +33,8 @@ const selectionController = (noSelection) => {   // model is my color tab : widh
       setSectionSelected : sectionOpen.setValue,
       onOpenColorSection : sectionOpen.onChange,
       onCloseColorSection: sectionClose.onChange,
-      onSectionOpen : isOpen.onChange
+      onSectionOpen : isOpen.onChange,
+      setOpen: isOpen.setValue
     }
   }
 
