@@ -178,5 +178,4 @@ blueSquareStarter();
 blueButterfliesStarter();
 greenMatrixStarter();
 greenTreeStarter();
-
 purpleStarter();
